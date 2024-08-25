@@ -9,7 +9,7 @@ const Navbar = () => {
     }
     return (
         <>
-            <nav className="navbar bg-base-100">
+            <nav className="navbar bg-base-100 border-b border-[#3B3B98]">
                 <div className="flex-1 md:ml-10 ml-0">
                     <Link to="/"><img src="./../../../../public/logo.png" alt="" className='w-28 h-24 ' /></Link>
                 </div>
