@@ -122,37 +122,59 @@ const Home = () => {
                     <h2 className='text-3xl text-[#3B3B98] md:text-2xl font-bold font-merriweather pt-2 md:pt-10 pl-5 text-center md:text-start'> Categorization <FaArrowTurnDown className='inline-block' /></h2>
 
 
-                    <h2 className='text-xl font-semibold pl-10 mt-5'>Cagetory</h2>
-                    <select onChange={handleCategory} className="select focus:outline-none focus:border-none focus:px-5 ml-5 max-w-xs">
-                        <option disabled selected>All Category</option>
-                        <option>Mobile</option>
-                        <option>Laptop</option>
-                        <option>Watch</option>
+                    <div className='grid grid-cols-2 md:grid-cols-1 items-center'>
 
-                    </select>
-                    <h2 className='text-xl font-semibold pl-10 mt-5'>Brand</h2>
-                    <select onChange={handleBrand} className="select focus:outline-none focus:border-none focus:px-5 ml-5 max-w-xs">
-                        <option disabled selected>All Brand</option>
-                        <option>Samsung</option>
-                        <option>Asus</option>
-                        <option>Apple</option>
-                    </select>
+                        <div className="dropdown dropdown-bottom mt-2 md:mt-4  ml-10 md:ml-7">
+                            <div tabIndex={0} role="button" className="btn m-1 font-merriweather ">Short By <FaArrowTurnDown></FaArrowTurnDown></div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                <li><a onClick={handleLowToHigh}>Low To High</a></li>
+                                <li><a onClick={handleHighToLow}>High To Low</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2 className='text-xl font-merriweather text-[#3B3B98] font-semibold pl-0 md:pl-10 mt-5 text-center md:text-start'>Cagetory</h2>
+                            <select onChange={handleCategory} className="select focus:outline-none focus:border-none focus:px-5 ml-10 md:ml-5 max-w-xs ">
+                                <option disabled selected>All Category</option>
+                                <option>Mobile</option>
+                                <option>Laptop</option>
+                                <option>Watch</option>
+                            </select>
+
+                        </div>
+
+                        <div>
+                            <h2 className='text-xl font-merriweather text-[#3B3B98] font-semibold pl-0 md:pl-10 mt-5 text-center md:text-start'>Brand</h2>
+                            <select onChange={handleBrand} className="select focus:outline-none focus:border-none focus:px-5 ml-10 md:ml-5 max-w-xs">
+                                <option disabled selected>All Brand</option>
+                                <option>Samsung</option>
+                                <option>Asus</option>
+                                <option>Apple</option>
+                            </select>
+                        </div>
 
 
 
-                    <h2 className='text-xl font-semibold pl-10 mt-5'>Price Range</h2>
 
-                    <form onSubmit={handlePrice}>
-                        <label className='pl-12'>
-                            Min
-                            <input type="number" name="min" defaultValue="10000" id="" className='border w-[100px] rounded ml-2' />
-                        </label>
-                        <label className='block pl-12 mt-2' >
-                            Max
-                            <input type="number" name="max" defaultValue="30000" id="" className='border w-[100px] rounded ml-2' />
-                        </label>
-                        <button className='bg-black text-white text-center px-5 py-1 ml-20 mt-2'>Search</button>
-                    </form>
+
+                        <div className=''>
+                            <h2 className='text-xl font-merriweather text-[#3B3B98] font-semibold pl-10 mt-5 text-center md:text-start'>Price Range</h2>
+
+                            <form className='flex flex-col justify-center items-center pb-5' onSubmit={handlePrice}>
+                                <label className='pl-12'>
+                                    Min
+                                    <input type="number" name="min" defaultValue="10000" id="" className='border w-[100px] rounded ml-2' />
+                                </label>
+                                <label className='block pl-12 mt-2' >
+                                    Max
+                                    <input type="number" name="max" defaultValue="30000" id="" className='border w-[100px] rounded ml-2' />
+                                </label>
+                                <button className='bg-black w-auto md:w-[53%] text-white text-center px-4  rounded py-1 ml-12 mt-2'>Search</button>
+                            </form>
+
+                        </div>
+                    </div>
+
 
 
 
@@ -164,20 +186,14 @@ const Home = () => {
                 <div className='md:w-[80%]  md:pl-10 md:py-10 '>
 
                     <div className='md:flex items-center md:gap-x-10 mb-3'>
-                        <form onSubmit={handleSearch} className='flex gap-x-3'>
-                            <label className="input input-bordered flex items-center gap-2 ">
+                        <form onSubmit={handleSearch} className='flex gap-x-3 flex-col md:flex-row items-center'>
+                            <label className="input input-bordered flex items-center gap-2 mx-5 md:mx-0 mt-5">
                                 <input type="text" className="grow" name='title' placeholder="Search" />
                                 <FaSearch></FaSearch>
                             </label>
-                            <button className='text-xl font-medium bg-black text-white px-5 py-2 rounded'>Search</button>
+                            <button className='btn w-[57%] rounded-xl md:rounded-lg md:w-auto px-5 font-merriweather  font-medium bg-black text-white   mx-5 md:mx-0 mt-4'>Search</button>
                         </form>
-                        <div className="dropdown dropdown-bottom">
-                            <div tabIndex={0} role="button" className="btn m-1">Short By <FaArrowTurnDown></FaArrowTurnDown></div>
-                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li><a onClick={handleLowToHigh}>Low To High</a></li>
-                                <li><a onClick={handleHighToLow}>High To Low</a></li>
-                            </ul>
-                        </div>
+
                     </div>
 
 

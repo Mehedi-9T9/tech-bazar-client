@@ -11,7 +11,7 @@ const Navbar = () => {
         <>
             <nav className="navbar bg-base-100 border-b border-[#3B3B98]">
                 <div className="flex-1 md:ml-10 ml-0">
-                    <Link to="/"><img src="./../../../../public/logo.png" alt="" className='w-28 h-24 ' /></Link>
+                    <Link to="/"><img src="/logo.png" alt="" className='w-28 h-24 ' /></Link>
                 </div>
                 <div className="flex-none ">
                     <div className="dropdown dropdown-end">
