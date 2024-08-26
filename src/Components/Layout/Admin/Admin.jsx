@@ -10,15 +10,15 @@ const Admin = () => {
             </header>
             <main>
 
-                <div className='flex'>
-                    <div className='w-[20%] max-h-screen bg-white'>
-                        <ul className='ml-5'>
+                <div className='md:flex'>
+                    <div className='md:w-[20%]  h-auto bg-white'>
+                        <ul className='ml-5 p-5 md:p-0'>
                             <NavLink to="/admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-5'>Home</li></NavLink>
                             <NavLink to="admin/addProduct"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Add Product</li></NavLink>
                             <NavLink to="/admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Manage Users</li></NavLink>
                         </ul>
                     </div>
-                    <div className='w-[80%] h-screen bg-[#ff7979]'>
+                    <div className='md:w-[80%]   p-5'>
                         <Outlet></Outlet>
 
                     </div>
