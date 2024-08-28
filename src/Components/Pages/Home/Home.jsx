@@ -15,12 +15,26 @@ const Home = () => {
     const [products, setProducts] = useState([])
 
 
+    //Pazination start
+    const [currentPage, setCurrentPage] = useState(0)
+    const [totalProducts, setTotalProducts] = useState(0)
+    const totalStep = Math.ceil(totalProducts / 6)
+    const pages = [...Array(totalStep).keys()]
+
+    useEffect(() => {
+        axiosSecure.get("/product/totalProduct")
+            .then(res => {
+                setTotalProducts(res.data?.result);
+                // console.log(res.data);
+            })
+    }, [])
+
     const { isPending, error, data } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get("/product")
+            const res = await axiosSecure.get(`/product?page=${currentPage}`)
             setProducts(res.data)
-            setTotalProducts(res.data?.length)
+            // setTotalProducts(res.data?.length)
             return res.data
 
         }
@@ -28,15 +42,11 @@ const Home = () => {
     })
 
 
-    //Pazination start
-    const [currentPage, setCurrentPage] = useState(0)
-    const [totalProducts, setTotalProducts] = useState(0)
-    const totalStep = Math.ceil(totalProducts / 6)
-    const pages = [...Array(totalStep).keys()]
 
 
 
 
+    console.log(typeof totalProducts);
 
 
 
@@ -255,14 +265,15 @@ const Home = () => {
                     </div>
 
 
-                    <div className='mt-5'>
-                        <button onClick={previewHandle} className='btn bg-[#FFF] md:ml-2'><GrCaretPrevious /></button>
+                    <div className="mt-5">
+                        <button onClick={previewHandle} className="btn bg-[#FFF] md:ml-2 "><GrCaretPrevious /></button>
                         {
-                            pages?.map(page => <button onClick={() => handlePage(page)} className={`btn ${currentPage == page && 'bg-[#F63E7B]'}`} key={page}>{page + 1}</button>)
+                            pages?.map(page => <button onClick={() => handlePage(page)} className={`btn mx-2 ${currentPage == page && 'bg-[#F63E7B]'}`} key={page}>{page + 1}</button>)
                         }
                         <button onClick={nextHandle} className='btn bg-[#FFF]'><GrCaretNext /></button>
 
                     </div>
+
 
                 </div>
             </div>
