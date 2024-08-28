@@ -21,13 +21,23 @@ const AddMobile = () => {
                     <label className="label">
                         <span className="label-text">Category</span>
                     </label>
-                    <input type="text" placeholder="category" className="input input-bordered" required />
+                    <select className="select select-bordered w-full max-w-xs ml-3">
+                        <option disabled selected>Category</option>
+                        <option>Mobile</option>
+                        <option>Laptop</option>
+                        <option>Watch</option>
+                    </select>
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Brand</span>
                     </label>
-                    <input type="text" placeholder="Brand" className="input input-bordered" required />
+                    <select className="select select-bordered w-full max-w-xs ml-3">
+
+                        <option>samsung</option>
+                        <option>asus</option>
+                        <option>apple</option>
+                    </select>
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -35,12 +45,12 @@ const AddMobile = () => {
                     </label>
                     <input type="text" placeholder="Memory" className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                {/* <div className="form-control">
                     <label className="label">
                         <span className="label-text">Network</span>
                     </label>
                     <input type="text" placeholder="Network" className="input input-bordered" required />
-                </div>
+                </div> */}
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Weight</span>
@@ -55,22 +65,22 @@ const AddMobile = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Chipshit</span>
+                        <span className="label-text">Processor</span>
                     </label>
-                    <input type="text" placeholder="Chipshit" className="input input-bordered" required />
+                    <input type="text" placeholder="Processor" className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                {/* <div className="form-control">
                     <label className="label">
                         <span className="label-text">Camera</span>
                     </label>
                     <input type="text" placeholder="Camera" className="input input-bordered" required />
-                </div>
-                <div className="form-control">
+                </div> */}
+                {/* <div className="form-control">
                     <label className="label">
                         <span className="label-text">Main Camera</span>
                     </label>
                     <input type="text" placeholder="Main Camera" className="input input-bordered" required />
-                </div>
+                </div> */}
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Photo</span>

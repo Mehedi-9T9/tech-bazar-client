@@ -21,7 +21,12 @@ const AddLaptop = () => {
                     <label className="label">
                         <span className="label-text">Category</span>
                     </label>
-                    <input type="text" placeholder="category" className="input input-bordered" required />
+                    <select className="select select-bordered w-full max-w-xs ml-3">
+                        <option disabled selected>Category</option>
+                        <option>Mobile</option>
+                        <option>Laptop</option>
+                        <option>Watch</option>
+                    </select>
                 </div>
                 <div className="form-control">
                     <label className="label">

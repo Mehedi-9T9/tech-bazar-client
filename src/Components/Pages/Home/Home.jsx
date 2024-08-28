@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { FaArrowTurnDown } from 'react-icons/fa6';
 import Bannar from '../Bannar/Bannar';
+import UseInfo from '../../Hooks/UseInfo';
+import { useQuery } from '@tanstack/react-query';
+import AxiosSecure from '../../Hooks/AxiosSecure';
+import ProductCart from '../ProductCard/ProductCart';
 
 const Home = () => {
+    const text = UseInfo()
+    console.log(text);
+    const axiosSecure = AxiosSecure()
+
+    const [products, setProducts] = useState([])
+
+    const { isPending, error, data } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/product")
+            setProducts(res.data)
+            return res.data
+
+        }
+
+    })
+
+
+
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -118,7 +141,7 @@ const Home = () => {
         <div>
             <div className='md:flex'>
                 {/* assaide bar */}
-                <div className='md:w-[20%] md:max-h-screen bg-white'>
+                <div className='md:w-[20%] md:h-auto bg-white'>
                     <h2 className='text-3xl text-[#3B3B98] md:text-2xl font-bold font-merriweather pt-2 md:pt-10 pl-5 text-center md:text-start'> Categorization <FaArrowTurnDown className='inline-block' /></h2>
 
 
@@ -207,6 +230,12 @@ const Home = () => {
 
 
                     {/* For Porducts */}
+                    <h2 className='text-4xl'>total data: {products?.length}</h2>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+                        {
+                            products?.map(product => <ProductCart key={product._id} product={product}></ProductCart>)
+                        }
+                    </div>
                     {/* <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
 
             {

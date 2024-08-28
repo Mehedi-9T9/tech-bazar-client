@@ -13,9 +13,9 @@ const Admin = () => {
                 <div className='md:flex'>
                     <div className='md:w-[20%]  h-auto bg-white'>
                         <ul className='ml-5 p-5 md:p-0'>
-                            <NavLink to="/admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-5'>Home</li></NavLink>
-                            <NavLink to="admin/addProduct"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Add Product</li></NavLink>
-                            <NavLink to="/admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Manage Users</li></NavLink>
+                            <NavLink to="admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-5'>Home</li></NavLink>
+                            <NavLink to="addProduct"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Add Product</li></NavLink>
+                            <NavLink to="admin"><li className='text-xl font-merriweather font-semibold text-[#3B3B98] mt-2'>Manage Users</li></NavLink>
                         </ul>
                     </div>
                     <div className='md:w-[80%]   p-5'>

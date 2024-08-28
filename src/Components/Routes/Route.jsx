@@ -23,11 +23,11 @@ const Route = createBrowserRouter([
         element: <Admin></Admin>,
         children: [
             {
-                path: "/admin",
+                path: "admin",
                 element: <AdminHome></AdminHome>
             },
             {
-                path: "admin/addProduct",
+                path: "addProduct",
                 element: <AddProduct></AddProduct>
             }
         ]
