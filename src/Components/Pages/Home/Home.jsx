@@ -6,24 +6,44 @@ import UseInfo from '../../Hooks/UseInfo';
 import { useQuery } from '@tanstack/react-query';
 import AxiosSecure from '../../Hooks/AxiosSecure';
 import ProductCart from '../ProductCard/ProductCart';
+import { GrCaretNext, GrCaretPrevious } from 'react-icons/gr';
 
 const Home = () => {
     const text = UseInfo()
     console.log(text);
     const axiosSecure = AxiosSecure()
-
     const [products, setProducts] = useState([])
+
+
+
+
+
+
+
+
 
     const { isPending, error, data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await axiosSecure.get("/product")
             setProducts(res.data)
+            setTotalProducts(res.data?.length)
             return res.data
 
         }
 
     })
+
+
+    //Pazination start
+    const [currentPage, setCurrentPage] = useState(0)
+    const [totalProducts, setTotalProducts] = useState(0)
+    const totalStep = Math.ceil(totalProducts / 6)
+    const pages = [...Array(totalStep).keys()]
+
+
+
+
 
 
 
@@ -112,9 +132,9 @@ const Home = () => {
 
 
     // const perpageItem = 6
-    const totalProducts = 40
-    const totalStep = Math.ceil(totalProducts / 6)
-    const pages = [...Array(totalStep).keys()]
+    // const totalProducts = 10
+
+
 
     const handlePage = (count) => {
         setCurrentPage(count)
@@ -206,7 +226,7 @@ const Home = () => {
                 </div>
 
 
-                <div className='md:w-[80%]  md:pl-10 md:py-10 '>
+                <div className='md:w-[80%]  md:pl-10 '>
 
                     <div className='md:flex items-center md:gap-x-10 mb-3'>
                         <form onSubmit={handleSearch} className='flex gap-x-3 flex-col md:flex-row items-center'>
@@ -230,46 +250,22 @@ const Home = () => {
 
 
                     {/* For Porducts */}
-                    <h2 className='text-4xl'>total data: {products?.length}</h2>
+                    <h2 className='text-5xl font-merriweather font-extrabold text-[#3B3B98]'>Our Products: {products?.length}</h2>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
                         {
                             products?.map(product => <ProductCart key={product._id} product={product}></ProductCart>)
                         }
                     </div>
-                    {/* <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-
-            {
-              products?.map(product => <div key={product?.productId} className="card bg-base-100  shadow-xl">
-                <figure className="px-10 pt-10">
-                  <img
-                    src={product?.img}
-                    alt={product.title}
-                    className="rounded-xl" />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <div className='flex gap-x-10'>
-                    <p>Price : {product?.price}</p>
-                    <p>Brand: {product?.brand}</p>
-                  </div>
-                  <h2 className="card-title">{product?.title}</h2>
 
 
-                </div>
-              </div>)
-            }
+                    <div className='mt-5'>
+                        <button onClick={previewHandle} className='btn bg-[#FFF] md:ml-2'><GrCaretPrevious /></button>
+                        {
+                            pages?.map(page => <button onClick={() => handlePage(page)} className={`btn ${currentPage == page && 'bg-[#F63E7B]'}`} key={page}>{page + 1}</button>)
+                        }
+                        <button onClick={nextHandle} className='btn bg-[#FFF]'><GrCaretNext /></button>
 
-
-
-          </div> */}
-
-                    {/* <div className='mt-5'>
-            <button onClick={previewHandle} className='btn bg-[#FFF] md:ml-2'><GrCaretPrevious /></button>
-            {
-              pages?.map(page => <button onClick={() => handlePage(page)} className={`btn ${currentPage == page && 'bg-[#F63E7B]'}`} key={page}>{page + 1}</button>)
-            }
-            <button onClick={nextHandle} className='btn bg-[#FFF]'><GrCaretNext /></button>
-
-          </div> */}
+                    </div>
 
                 </div>
             </div>
