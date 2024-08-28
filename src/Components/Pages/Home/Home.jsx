@@ -15,13 +15,6 @@ const Home = () => {
     const [products, setProducts] = useState([])
 
 
-
-
-
-
-
-
-
     const { isPending, error, data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -51,8 +44,12 @@ const Home = () => {
     const handleSearch = (e) => {
         e.preventDefault()
         const title = e.target.title.value
-        axios.get(`https://mehedi-mart-serverside.vercel.app/products/title?title=${title}`)
-            .then(res => setProducts(res.data))
+        console.log(title);
+        axiosSecure.get(`/product/search/?title=${title}`)
+            .then(res => {
+                setProducts(res.data)
+                setTotalProducts(res.data?.length)
+            })
 
     }
 
