@@ -64,11 +64,11 @@ const Home = () => {
     }
 
     const handleLowToHigh = () => {
-        axios.get("https://mehedi-mart-serverside.vercel.app/products/lowToHigh")
+        axiosSecure.get(`/product/lowtohigh?page=${currentPage}`)
             .then(res => setProducts(res.data))
     }
     const handleHighToLow = () => {
-        axios.get("https://mehedi-mart-serverside.vercel.app/products/highToLow")
+        axiosSecure.get("/product/hightolow")
             .then(res => setProducts(res.data))
     }
 
